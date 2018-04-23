@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+ 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+  	http://www.springframework.org/schema/mvc 	
+  	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	
+	<context:component-scan base-package="project.controllers"/>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 
+        <!-- one of the properties available; the maximum file size in bytes -->
+        <property name="maxUploadSize" value="10000000">
+    </property></bean>
+
+	<bean id="user" class="project.beans.User"></bean>
+	<bean id="student" class="project.beans.Student"></bean>
+	<bean id="exam" class="project.beans.Exam"></bean>
+	<bean id="admin" class="project.beans.Admin"></bean>
+	<bean id="event" class="project.beans.Event"></bean>
+	<bean id="location" class="project.beans.Location"></bean>
+	<bean id="menuitems" class="project.beans.Menuitems"></bean>
+	<bean id="orders" class="project.beans.Orders"></bean>
+	<bean id="review" class="project.beans.Review"></bean>
+	<bean id="user_cart" class="project.beans.User_Cart"></bean>
+	
+	<bean id="userService" class="project.service.UserService"></bean>
+	<bean id="menuService" class="project.service.MenuService"></bean>
+	<bean id="userCartService" class="project.service.UserCartService"></bean>
+	<bean id="locationService" class="project.service.LocationService"></bean>
+	<bean id="orderService" class="project.service.OrderService"></bean>
+	<bean id="studentService" class="project.service.StudentService"></bean>
+	<bean id="examService" class="project.service.ExamService"></bean>
+	<bean id="adminService" class="project.service.AdminService"></bean>
+	<bean id="eventService" class="project.service.EventService"></bean>
+	<!-- <bean id="careerService" class="project.service.CareerService"></bean> -->
+	
+	<bean id="userDao" class="project.dao.UserDao"></bean>
+	<bean id="menuDao" class="project.dao.MenuDao"></bean>
+	<bean id="userCartDao" class="project.dao.UserCartDao"></bean>
+	<bean id="locationDao" class="project.dao.LocationDao"></bean>
+	<bean id="orderDao" class="project.dao.OrderDao"></bean>
+	<bean id="studentDao" class="project.dao.StudentDao"></bean>
+	<bean id="examDao" class="project.dao.ExamDao"></bean>
+	<bean id="adminDao" class="project.dao.AdminDao"></bean>
+	<bean id="eventDao" class="project.dao.EventDao"></bean>
+	<!-- <bean id="careerDao" class="project.dao.CareerDao"></bean> -->
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="rohitpce129@gmail.com" />
+		<property name="password" value="78445112" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	<bean id="viewResolver"
+	      class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+              <property name="prefix">
+                 <value>/WEB-INF/views/</value>
+              </property>
+              <property name="suffix">
+                 <value>.jsp</value>
+              </property>
+	      
+        </bean>
+        
+        <bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="java.lang.Exception">error</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<mvc:annotation-driven />
+</beans>
