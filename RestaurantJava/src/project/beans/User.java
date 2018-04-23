@@ -10,7 +10,6 @@ public class User {
 	@Id
 	@GeneratedValue
 	int id;
-	String name;
 	String email;
 	String password;
 	String isAdmin;
