@@ -2,11 +2,11 @@
 A full stcak Java application to order food from restaurant, role based authentication and admin functionalities such as add new food items to menu, view all custeromers, update all custeomer see invices.
 
 ## Technologies: 
-•	JDK 8
-•	Tomcat 8 or 8.5
-•	Spring MVC
-•	Hibernate ORM
-•	Database MySQL
+*	JDK 8
+*	Tomcat 8 or 8.5
+*	Spring MVC
+*	Hibernate ORM
+*	Database MySQL
 
 ## Screenshots
 
